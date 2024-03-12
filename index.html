@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .countdown-container {
+            display: none; /* Inicialmente oculta a contagem regressiva */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .countdown-item {
+            display: inline-block;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            var selectedDate = document.getElementById("selected-date").value;
+            
+            // Verifica se uma data foi selecionada
+            if (selectedDate) {
+                document.getElementById("countdown-container").style.display = "block"; // Exibe a contagem regressiva
+                var eventDate = new Date(selectedDate).getTime();
+                var currentDate = new Date().getTime();
+                var timeLeft = eventDate - currentDate;
+
+                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days;
+                
+				document.getElementById("selected-date").style.display="none";
+				document.getElementById("input-date").style.display="none";
+				
+            } else {
+                document.getElementById("countdown-container").style.display = "none"; // Oculta a contagem regressiva se nenhuma data for selecionada
+            }
+        }
+
+        // Chama a função para garantir que a contagem seja exibida imediatamente
+        updateCountdown();
+    </script>
+</head>
+<body>
+   
+    <iframe title="Curva de produto" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=a530ded0-0da6-46bd-a0fc-77ee0e2d3fe2&autoAuth=true&ctid=adb46edb-c2e0-473a-b9cb-32b63710865e" frameborder="0" allowFullScreen="true"></iframe>
+       </body>
+</html>
